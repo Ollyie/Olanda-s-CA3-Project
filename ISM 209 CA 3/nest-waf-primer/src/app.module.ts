@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { NinRegistrationModule } from './nin-registration/nin-registration.module';
+
 
 @Module({
-  imports: [],
+  imports: [TypeOrmModule.forRoot(),NinRegistrationModule],
+  //imports: [NinRegistrationModule, BioDataModule, LinkedIdentityModule],
   controllers: [AppController],
   providers: [AppService],
 })
