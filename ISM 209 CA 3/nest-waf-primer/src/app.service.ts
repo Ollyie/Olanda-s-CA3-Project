@@ -13,9 +13,9 @@ export class AppService {
 
   getHome(): {} {
     return {title: 'Home Page'};
-    }
-    getAboutUs(): {} {
+  }
+  getAboutUs(): {} {
     return {title: 'About Us Page'};
-    }
+  }
 
 }
