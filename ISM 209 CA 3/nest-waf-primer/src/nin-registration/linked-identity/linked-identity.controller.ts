@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, Render } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, Render, Patch } from '@nestjs/common';
 import { LinkedIdentityService } from './linked-identity.service';
 import { CreateLinkedIdentityDto } from './dto/create-linked-identity.dto';
 import { UpdateLinkedIdentityDto } from './dto/update-linked-identity.dto';
@@ -12,12 +12,6 @@ export class LinkedIdentityController {
     return this.linkedIdentityService.create(createLinkedIdentityDto);
   }
 
-  @Get('create')
-  @Render('/create-linked-identity.html')
-  createForm() {
-  }
-
-
   @Get()
   findAll() {
     return this.linkedIdentityService.findAll();
@@ -26,9 +20,7 @@ export class LinkedIdentityController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.linkedIdentityService.findOne(+id);
-
   }
-
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateLinkedIdentityDto: UpdateLinkedIdentityDto) {
@@ -39,4 +31,16 @@ export class LinkedIdentityController {
   remove(@Param('id') id: string) {
     return this.linkedIdentityService.remove(+id);
   }
+
+  @Patch(':LinkedIdentityId/biodatum/BioDatumId')
+  setBioDatumById(@Param('LinkedIdentityId') LinkedIdentityId: string, @Param('BioDatumId') BioDatumId: string) {
+    return this.linkedIdentityService.setBioDatumById(+LinkedIdentityId, +BioDatumId);
+  }
+
+  @Delete(':LinkedIdentityId/biodatum')
+  unsetBioDatumById(@Param('LinkedIdentityId') LinkedIdentityId: string) {
+    return this.linkedIdentityService.unsetBioDatumById(+LinkedIdentityId);
+  }
+
 }
+

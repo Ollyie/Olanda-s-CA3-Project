@@ -1,14 +1,11 @@
-export class CreateLinkedIdentityDto {}
-export class CreateUserDto {
-    readonly firstName: string;
-    readonly middleName?: string;
-    readonly lastName: string;
-    readonly dateOfBirth?: Date;
-    readonly nationality?: string
-    readonly countryOfBirth: string
-    readonly stateOfBirth: string
-    readonly townOfBirth: string
-    readonly address?: string
-    readonly proffession: string
-    readonly isActive?: boolean;
+import { CreateBioDatumDto} from "src/nin-registration/bio-data/dto/create-bio-datum.dto"
+
+export class CreateLinkedIdentityDto {
+
+    readonly NIN?: number;
+    readonly BVN?: number;
+    readonly MobileNumber?: number;
+    readonly biodatum: number;
+    
+
   }

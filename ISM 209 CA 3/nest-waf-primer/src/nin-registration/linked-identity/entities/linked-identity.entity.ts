@@ -11,12 +11,10 @@ export class LinkedIdentity {
     BVN: number
 
     @Column({ nullable: true })
-    Mobile: number;
-
-    @Column({ nullable: true })
-    isActive: boolean;
+    MobileNumber: number;
 
     @JoinColumn()
     @OneToOne(type => BioDatum, BioDatum => BioDatum.LinkedIdentity, { cascade: true })
     BioData: BioDatum;
+  BioDatum: BioDatum;
 }
