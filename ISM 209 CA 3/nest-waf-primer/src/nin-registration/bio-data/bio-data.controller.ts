@@ -12,6 +12,11 @@ export class BioDataController {
     return this.bioDataService.create(createBioDatumDto);
   }
 
+  @Get('create')
+  @Render('BioDatum/create-bio-data.html')
+  createForm() {
+  }
+
   @Get()
   findAll() {
     return this.bioDataService.findAll();
@@ -20,11 +25,6 @@ export class BioDataController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.bioDataService.findOne(+id);
-  }
-
-  @Get('create')
-  @Render('users/create-user.html')
-  createForm() {
   }
 
   @Put(':id')

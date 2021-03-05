@@ -1,39 +1,22 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BioDatum } from "src/nin-registration/bio-data/entities/bio-datum.entity";
+
 @Entity()
-export class LinkedIdentityService {
+export class LinkedIdentity {
+
     @PrimaryGeneratedColumn()
-    id: number;
+    NIN: number;
 
     @Column()
-    firstName: string;
+    BVN: number
 
     @Column({ nullable: true })
-    middleName: string;
-
-    @Column()
-    lastName: string;
+    Mobile: number;
 
     @Column({ nullable: true })
-    dateOfBirth: Date;
-
-    @Column({ nullable: true })
-    nationality: string
-
-    @Column({ nullable: true })
-    countryOfBirth: string
-
-    @Column({ nullable: true })
-    stateOfBirth: string
-
-    @Column({ nullable: true })
-    townOfBirth: string
-
-    @Column({ nullable: true })
-    address: string
-
-    @Column({ nullable: true })
-    proffession: string
-
-    @Column({ default: true })
     isActive: boolean;
+
+    @JoinColumn()
+    @OneToOne(type => BioDatum, BioDatum => BioDatum.LinkedIdentity, { cascade: true })
+    BioData: BioDatum;
 }

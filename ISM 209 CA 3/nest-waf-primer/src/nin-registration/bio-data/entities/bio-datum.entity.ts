@@ -37,4 +37,5 @@ export class BioDatum {
 
     @Column({ default: true })
     isActive: boolean;
+    LinkedIdentity: any;
 }

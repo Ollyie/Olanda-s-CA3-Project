@@ -46,12 +46,6 @@
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Email:</label>
-                    <div class="control has-icons-right">
-                        <input class="input" id="email" name="email" type="email" placeholder="Email" required>
-                    </div>
-                </div>
-                <div class="field">
                     <label class="label">Date of birth:</label>
                     <div class="control has-icons-right">
                         <input class="input" id="dateOfBirth" name="dateOfBirth" type="date" required
@@ -60,6 +54,18 @@
                 </div>
                 <div class="field">
                     <label class="label">Nationality:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="nationality" name="nationality" type="nationality" placeholder="Nationality" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Country Of birth:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="countryOfBirth" name="countryOfBirth" type=" countryOfBirth" placeholder=" countryOfBirth" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">:</label>
                     <div class="control has-icons-right">
                         <input class="input" id="nationality" name="nationality" type="text" placeholder="Nationality">
                     </div>
@@ -150,7 +156,7 @@
                 'Content-Type': 'application/json'
             },
             //credentials: 'same-origin',
-            body: JSON.stringify({ firstName, middleName, lastName, email, dateOfBirth, nationality, address })
+            body: JSON.stringify({ firstName, middleName, lastName, dateOfBirth, nationality, countryOfBirth, stateOfBirth, townOfBirth, address })
         }
 
         //call fetch
