@@ -12,7 +12,7 @@
                 <a href="/about-us">About Us</a>
             </div>
             <div>
-                <a href="/bio-data/create" class="active">Add user</a>
+                <a href="/bio-datum/create" class="active">Add Bio-Data</a>
             </div>
         </div>
         <div class="navigation-bar-right">
@@ -24,8 +24,8 @@
         </div>
     </div>
     <div class="grid-item-row-2">
-        <form class="box" id="createUserForm" action="/users" method="POST">
-            <fieldset id="createUserFormFieldSet" class="container">
+        <form class="box" id="createBioDataForm" action="/biodata" method="POST">
+            <fieldset id="createbio-datumFormFieldSet" class="container">
                 <div class="field">
                     <label class="label">First name:</label>
                     <div class="control has-icons-right">
@@ -55,19 +55,27 @@
                 <div class="field">
                     <label class="label">Nationality:</label>
                     <div class="control has-icons-right">
-                        <input class="input" id="nationality" name="nationality" type="nationality" placeholder="Nationality" required>
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Country Of birth:</label>
-                    <div class="control has-icons-right">
-                        <input class="input" id="countryOfBirth" name="countryOfBirth" type=" countryOfBirth" placeholder=" countryOfBirth" required>
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">:</label>
-                    <div class="control has-icons-right">
                         <input class="input" id="nationality" name="nationality" type="text" placeholder="Nationality">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Country Of Birth:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="countryOfBirth" name="countryOfBirth" type="text"
+                            placeholder="CountryOfBirth">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">State Of Birth:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="stateOfBirth" name="stateOfBirth" type="text"
+                            placeholder="StateOfBirth">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Town Of Birth:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="townOfBirth" name="townOfBirth" type="text" placeholder="TownOfBirth">
                     </div>
                 </div>
                 <div class="field">
@@ -76,10 +84,36 @@
                         <input class="input" id="address" name="address" type="text" placeholder="Address">
                     </div>
                 </div>
+                <div class="field">
+                    <label class="label">Profession:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="profession" name="profession" type="text" placeholder="Profession">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">NIN:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="NIN" name="NIN" type="number" placeholder="NIN" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">BVN:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="BVN" name="BVN" type="number" placeholder="BVN">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Mobile Number:</label>
+                    <div class="control has-icons-right">
+                        <input class="input" id="mobilenumber" name="mobilenumber" type="number"
+                            placeholder="Mobile number">
+                    </div>
+                </div>
 
                 <div class="field is-grouped">
                     <div class="control">
-                        <button type="submit" id="submitCreateUserForm" class="button is-link is-small">Submit</button>
+                        <button type="submit" id="submitCreatebio-datumForm"
+                            class="button is-link is-small">Submit</button>
                     </div>
                     <div class="control">
                         <button type="reset" class="button is-light is-small">Clear</button>
@@ -109,9 +143,9 @@
 {% endblock %}
 
 <script>
-    const createUserForm = document.getElementById('createUserForm');
+    const createbiodatumForm = document.getElementById('createbio-datumForm');
 
-    createUserForm.addEventListener('submit', (event) => {
+    createbiodatumForm.addEventListener('submit', (event) => {
         event.preventDefault();
 
         //Get fields and check validities
@@ -129,12 +163,6 @@
             return false;
         }
 
-        const email = document.getElementById('email').value;
-        if (email == '') {
-            email.reportValidity();
-            return false;
-        }
-
         const dateOfBirth = document.getElementById('dateOfBirth').value;
         if (dateOfBirth == '') {
             dateOfBirth.reportValidity();
@@ -143,11 +171,17 @@
 
         const nationality = document.getElementById('nationality').value;
 
+        const countryOfBirth = document.getElementById('countryOfBirth').value;
+
+        const stateOfBirth = document.getElementById('stateOfBirth').value;
+
+        const townOfBirth = document.getElementById('townOfBirth').value;
+
         const address = document.getElementById('address').value;
 
 
         //start the button spinner
-        document.getElementById("submitCreateUserForm").classList.add("is-loading");
+        document.getElementById("submitbio-datumForm").classList.add("is-loading");
 
         //prepare init for fetch
         const init = {
@@ -160,14 +194,14 @@
         }
 
         //call fetch
-        fetch('/users', init)
+        fetch('/bio-datum', init)
             .then(response => response.json())
             .then(data => {
                 //alert(JSON.stringify(data))
                 //remove spinner class
-                document.getElementById("submitCreateUserForm").classList.remove("is-loading");
+                document.getElementById("submitbio-datumForm").classList.remove("is-loading");
                 //set notification
-                document.getElementById("notificationMessage").innerHTML = 'User creation successful';
+                document.getElementById("notificationMessage").innerHTML = 'Bio-Datum creation successful';
                 //add notification color class sent
                 document.getElementById("notification").classList.add("is-success");
                 //remove is-hidden from notificationWrapper
@@ -176,7 +210,7 @@
             })
             .catch(error => {
                 //remove spinner class
-                document.getElementById("submitCreateUserForm").classList.remove("is-loading");
+                document.getElementById("submitCreatebio-datumForm").classList.remove("is-loading");
 
                 document.getElementById("notificationMessage").innerHTML = error.message;
                 //add notification color class sent

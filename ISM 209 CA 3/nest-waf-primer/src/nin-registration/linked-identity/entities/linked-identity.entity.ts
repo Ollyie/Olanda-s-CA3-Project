@@ -17,4 +17,5 @@ export class LinkedIdentity {
     @OneToOne(type => BioDatum, BioDatum => BioDatum.LinkedIdentity, { cascade: true })
     BioData: BioDatum;
   BioDatum: BioDatum;
+  
 }

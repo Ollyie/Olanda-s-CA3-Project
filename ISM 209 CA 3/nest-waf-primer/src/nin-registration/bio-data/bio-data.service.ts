@@ -17,25 +17,25 @@ export class BioDataService {
   async create(createUserDto: CreateBioDatumDto) {
     const newUser: BioDatum = this.biodatumRepository.create(createUserDto)
     return this.biodatumRepository.save(newUser);
-    //return 'This action adds a new user';
+    return 'This action adds a new user';
   }
   async findAll() {
-    //return `This action returns all users`;
+    return `This action returns all users`;
     return await this.biodatumRepository.find();
   }
 
   async findOne(id: number) {
-    //return `This action returns a #${id} user`;
+    return `This action returns a #${id} user`;
     return await this.biodatumRepository.findOne(id);
   }
   async update(id: number, updateUserDto:
     UpdateBioDatumDto) {
-    //return `This action updates a #${id} BioData`;
+    return `This action updates a #${id} BioData`;
     return await this.biodatumRepository.update(id,
       updateUserDto);
   }
   async remove(id: number) {
-    //return `This action removes a #${id} BioData `;
+    return `This action removes a #${id} BioData `;
     return await this.biodatumRepository.delete(id);
   }
 }
