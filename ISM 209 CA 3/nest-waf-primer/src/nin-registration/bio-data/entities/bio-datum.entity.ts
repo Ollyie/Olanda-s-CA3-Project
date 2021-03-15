@@ -33,7 +33,7 @@ export class BioDatum {
     address: string
 
     @Column({ nullable: true })
-    proffession: string
+    proffession: string;
 
     @Column({ default: true })
     isActive: boolean;
